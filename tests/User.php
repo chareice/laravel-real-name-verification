@@ -18,7 +18,7 @@ class User extends Model implements RealNameVerifiableContract
     public function updateRealNameData(RealNameData $data)
     {
         $userRealNameInfo = new UserRealNameInfo();
-        $userRealNameInfo->name = $data->params['Name'];
+        $userRealNameInfo->name = $data->name;
 
         $this->realNameInfo()->save($userRealNameInfo);
     }
