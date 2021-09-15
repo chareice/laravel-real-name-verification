@@ -21,6 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::create('companies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('reg_num')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,5 +36,6 @@ class CreateUsersTable extends Migration
     {
         Schema::drop('user_real_name_infos');
         Schema::drop('users');
+        Schema::drop('companies');
     }
 }

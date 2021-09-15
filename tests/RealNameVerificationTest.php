@@ -47,10 +47,10 @@ class RealNameVerificationTest extends TestCase
 
         /** @var User $user */
         $user = User::query()->create();
-        $this->assertEquals('pending', $user->realNameStatus());
+        $this->assertFalse($user->realNameVerified());
 
         $user->verify("test");
-        $this->assertEquals('finished', $user->realNameStatus());
+        $this->assertTrue($user->realNameVerified());
     }
 
     public function test_fail_real_name_verify()
@@ -64,9 +64,10 @@ class RealNameVerificationTest extends TestCase
 
         /** @var User $user */
         $user = User::query()->create();
-        $this->assertEquals('pending', $user->realNameStatus());
+        $this->assertFalse($user->realNameVerified());
 
         $this->expectException(Exception::class);
         $user->verify("test");
+        $this->assertFalse($user->realNameVerified());
     }
 }

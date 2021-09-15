@@ -18,9 +18,9 @@ interface RealNameVerifiableContract
 
     /**
      * 获取实名认证状态
-     * @return string
+     * @return bool
      */
-    public function realNameStatus() : string;
+    public function realNameVerified() : bool;
 
     /**
      * 更新实名认证信息

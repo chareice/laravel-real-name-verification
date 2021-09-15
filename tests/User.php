@@ -23,13 +23,13 @@ class User extends Model implements RealNameVerifiableContract
         $this->realNameInfo()->save($userRealNameInfo);
     }
 
-    public function realNameStatus(): string
-    {
-        return $this->realNameInfo()->exists() ? "finished" : "pending";
-    }
-
     public function realNameInfo() : HasOne
     {
         return $this->hasOne(UserRealNameInfo::class);
+    }
+
+    public function realNameVerified(): bool
+    {
+        return $this->realNameInfo()->exists();
     }
 }

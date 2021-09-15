@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
-class RealNameData
+class RealNameData extends BaseData
 {
     /**
      * @var string 身份证人像URL
@@ -52,7 +52,7 @@ class RealNameData
      */
     public function __construct(array $params)
     {
-        $this->checkParams($params);
+        parent::__construct($params);
 
         $this->name = $params['Name'];
         $this->idNum = $params['IdNum'];
@@ -62,24 +62,16 @@ class RealNameData
         $this->address = $params['Address'];
     }
 
-    /**
-     * @throws Exception
-     */
-    protected function checkParams($params)
+
+    protected function verifyRules(): array
     {
-        $validator = Validator::make($params, [
+        return [
             'Name' => 'required',
             'IdNum' => 'required',
             'Sex' => ['required', Rule::in(['男', '女'])],
             'Nation' => 'required',
             'Birth' => 'required',
             'Address' => 'required'
-        ]);
-
-        try {
-            $validator->validate();
-        } catch (ValidationException $exception) {
-            throw new Exception($exception->getMessage(), $exception->getCode());
-        }
+        ];
     }
 }
