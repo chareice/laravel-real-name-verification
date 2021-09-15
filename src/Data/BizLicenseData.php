@@ -6,6 +6,11 @@ namespace Chareice\RealNameVerification\Data;
 class BizLicenseData extends BaseData
 {
     /**
+     * @var string 营业执照图片地址
+     */
+    public string $licenseImageURL;
+
+    /**
      * @var string 社会信用代码
      */
     public string $reg_num;
@@ -39,6 +44,7 @@ class BizLicenseData extends BaseData
         $this->capital = $params['Capital'];
         $this->person = $params['Person'];
         $this->setDate = $params['SetDate'];
+        $this->licenseImageURL = $params['licenseImgURL'];
     }
 
     protected function verifyRules(): array
@@ -48,7 +54,8 @@ class BizLicenseData extends BaseData
             'RegNum' => 'required',
             'Capital' => 'required',
             'Person' => 'required',
-            'SetDate' => 'required'
+            'SetDate' => 'required',
+            'licenseImgURL' => 'required'
         ];
     }
 }

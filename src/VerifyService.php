@@ -37,7 +37,7 @@ class VerifyService
         try {
             $resp = $ocrClient->IDCardOCR($req);
             $data = $resp->serialize();
-            return new RealNameData($data);
+            return new RealNameData(array_merge($data, compact('frontImgURL')));
         } catch (TencentCloudSDKException $exception) {
             throw new Exception($exception->getMessage(), $exception->getCode());
         }
@@ -65,7 +65,7 @@ class VerifyService
 
             $data = $resp->serialize();
 
-            return new BizLicenseData($data);
+            return new BizLicenseData(array_merge($data, compact('licenseImgURL')));
         } catch (TencentCloudSDKException $exception) {
             throw new Exception($exception->getMessage(), $exception->getCode());
         }

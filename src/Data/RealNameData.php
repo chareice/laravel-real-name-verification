@@ -60,6 +60,7 @@ class RealNameData extends BaseData
         $this->nation = $params['Nation'];
         $this->birthday = $params['Birth'];
         $this->address = $params['Address'];
+        $this->frontImgURL = $params['frontImgURL'];
     }
 
 
@@ -71,7 +72,8 @@ class RealNameData extends BaseData
             'Sex' => ['required', Rule::in(['男', '女'])],
             'Nation' => 'required',
             'Birth' => 'required',
-            'Address' => 'required'
+            'Address' => 'required',
+            'frontImgURL' => 'required'
         ];
     }
 }
