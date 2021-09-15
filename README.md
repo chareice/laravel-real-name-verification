@@ -1,6 +1,10 @@
 # Laravel Real Name Verification
 使用腾讯云的OCR接口对证照图片进行识别
 
+安装方法：
+```bash
+composer require chareice/laravel-real-name-verification
+```
 ## 个人实名认证
 对身份证图片进行OCR识别
 
