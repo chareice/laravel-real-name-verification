@@ -26,12 +26,39 @@ $user = User::first();
 
 // 验证成功，调用 $user 的 updateRealNameData 方法
 // 验证失败，抛出异常
-$user->verify($frontImage);
+$user->verify($frontImageURL);
 
+```
+或者直接调用 
+```php
+app(VerifyService::class)->verifyIDCard($frontImgURL, $backImgURL);
 ```
 
 ## 企业营业执照认证
 对营业执照图片进行OCR识别
 
 ```php
+class Company extends Model implements BizLicenseVerifiableContract
+{
+    use BizLicenseVerifiable;
+
+    public function updateBizLicenseData(BizLicenseData $data)
+    {
+        ...
+    }
+
+    public function bizLicenseVerified(): bool
+    {
+        ...
+    }
+}
+
+$company = Company::first();
+
+$company->verify($licenseImgURL);
+```
+
+或者直接调用
+```php
+app(VerifyService::class)->verifyBizLicense($licenseImgURL);
 ```
