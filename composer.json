@@ -23,6 +23,6 @@
     "require": {
         "php": ">=8.0",
         "laravel/framework": "^8.60",
-        "chareice/laravel-tencentcloud": "dev-main"
+        "chareice/laravel-tencentcloud": "^0.1"
     }
 }

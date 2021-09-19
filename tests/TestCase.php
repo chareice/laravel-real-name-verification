@@ -29,7 +29,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
             'prefix' => '',
         ]);
 
-        $app['config']->set('service.tencent_cloud', [
+        $app['config']->set('tencent_cloud', [
             'secret_id' => 'test',
             'secret_key' => 'test',
             'region' => 'test'
